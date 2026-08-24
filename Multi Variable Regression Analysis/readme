@@ -1,1 +1,75 @@
+# Determinants of Global Digital Adoption: A Multi-Variable Regression Analysis
 
+An econometric analysis exploring the key socio-economic drivers influencing cross-national internet adoption. Built using World Bank open development indicators across 73 countries and regions, this project uses ordinary least squares (OLS) multiple linear regression to model how economic output, basic infrastructure, education, and urbanization impact digital connectivity.
+
+---
+
+## 📌 Project Overview
+
+Access to digital infrastructure is a vital catalyst for modern economic growth, education, and financial inclusion. This project quantifies the relationship between cross-national internet penetration and major developmental indicators to evaluate which structural factors most effectively drive digital adoption.
+
+### **Core Objective**
+* Model and predict **Internet Penetration Rate (% of population)** using multi-variable regression.
+* Assess the statistical significance and relative impact of economic output, foundational infrastructure, literacy, and urbanization.
+* Evaluate multicollinearity and residual behavior across global economies.
+
+---
+
+## 📊 Dataset & Variables
+
+* **Sample Size:** 73 Countries and Regional Aggregates
+* **Source:** World Bank Development Indicators
+
+| Variable Name | Role | Unit | Description |
+| :--- | :--- | :--- | :--- |
+| **Individuals using the Internet** | Dependent ($Y$) | `% of population` | Percentage of individuals with internet access |
+| **GDP per capita** | Independent ($X_1$) | `Current US$` | Gross domestic product divided by midyear population |
+| **Adult Literacy Rate** | Independent ($X_2$) | `% (ages 15+)` | Percentage of population aged 15+ who can read/write |
+| **Access to Electricity** | Independent ($X_3$) | `% of population` | Electrification rate across urban and rural populations |
+| **Urban Population** | Independent ($X_4$) | `Thousands` | Total population living in urban areas |
+
+---
+
+## 📈 Model Specification & Methodology
+
+The multiple linear regression model is specified as:
+
+$$\text{Internet Adoption}_i = \beta_0 + \beta_1(\text{GDP per Capita}_i) + \beta_2(\text{Literacy Rate}_i) + \beta_3(\text{Electricity Access}_i) + \beta_4(\text{Urban Pop}_i) + \varepsilon_i$$
+
+### **Key Regression Findings**
+
+* **Multiple R:** $0.9123$
+* **$R^2$ (Coefficient of Determination):** $0.8323$ (83.23% of variance explained)
+* **Adjusted $R^2$:** $0.8224$
+* **Overall Model Significance ($F\text{-statistic}$):** $84.36$ ($p < 0.0001$)
+* **Standard Error:** $10.40$
+
+### **Coefficients & Statistical Significance**
+
+| Predictor Variable | Coefficient ($\beta$) | Standard Error | $t\text{-stat}$ | $p\text{-value}$ | Statistical Significance |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Intercept** | $-29.2018$ | $7.4830$ | $-3.90$ | $0.0002$ | Significant ($p < 0.01$) |
+| **GDP per Capita ($) | $+0.00044$ | $0.00011$ | $+4.02$ | $0.0001$ | Significant ($p < 0.01$) |
+| **Adult Literacy Rate (%)** | $+0.5106$ | $0.1344$ | $+3.80$ | $0.0003$ | Significant ($p < 0.01$) |
+| **Electricity Access (%)** | $+0.5229$ | $0.0796$ | $+6.57$ | $< 0.0001$ | Significant ($p < 0.001$) |
+| **Urban Population (000s)** | $-0.0000$ | $0.0000$ | $-1.17$ | $0.2454$ | Not Significant ($p > 0.05$) |
+
+---
+
+## 🔍 Key Insights
+
+1. **Foundational Infrastructure is Paramount:** **Access to electricity** ($\beta = 0.5229, p < 0.0001$) serves as the strongest structural determinant. Without reliable power, digital adoption remains severely constrained.
+2. **Human Capital Accelerates Digital Transition:** **Adult literacy** ($\beta = 0.5106, p < 0.001$) demonstrates a near-identical positive weight to electricity access, highlighting that digital adoption requires basic functional literacy.
+3. **Economic Capacity:** **GDP per capita** displays a consistently positive and statistically significant link ($p < 0.001$), supporting the affordability mechanism of devices and data services.
+4. **Urban Scale Independence:** **Urban population size** is not statistically significant ($p = 0.245$) after controlling for income, electrification, and literacy, indicating that geographic concentration alone does not guarantee digital penetration without prerequisite infrastructure.
+
+---
+
+## 📁 Repository Structure
+
+```text
+├── Multi Variable Regression Analysis.xlsx
+│   ├── Data For Analysis       # Raw cross-sectional dataset (73 observations)
+│   ├── Correlation             # Correlation matrix among predictors
+│   └── Regression Analysis     # ANOVA, summary output, and residual diagnostics
+└── README.md                   # Project summary and empirical findings
